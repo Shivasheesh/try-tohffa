@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>Tohffa - {% block title %} {{ title }} {% endblock %}</title>
+	{% else %}
+		<title>Tohffa | Horn, Bone, Shell, Brass Products, Candle Stands, Jewellery Boxes, Decoratives | Handicratfs made in India</title>
+	{% endif %}
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="Official website of Neelkanth Enterprises">
+    <!-- Meta Description -->
+    <meta name="description" content="Order Indian Handicrafts, Buy Handicrafts Items, Buy Horn Bone Items, Bulk Order horn, bone , shell, brass products, candle stands,jewellery boxes, multipurpose boxes and decoratives articles.">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="Handicrafts Buy, Gifts Buy, Order Handmade Gifts Online, Tohffa, Handicratfs made in India, Horn, Bone, Shell, Brass Products, Candle Stands, Jewellery Boxes, Decoratives, Order Gifts Online, Bulk order Handicrafts, Order Tohffa online ">
+    <!--CSS-->
+    <!--bootstrap-->
+	<link rel="stylesheet" type="text/css" href="{% static 'products/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+	<link rel="stylesheet" type="text/css" href="{% static 'products/style.css' %}">
+</head>
+<body>
+		<div class="main-wrapper">
+		<!--HEADER-->
+		<div class="header clearfix">
+			<div class="topBar">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-md-6 d-none d-md-block">
+							<ul class="list-inline">
+								<li><a href="https://www.facebook.com/neelkanth1973"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+	                  			<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+	                 			<li><a href="https://www.linkedin.com/company/neelkanth-enterprises/"><i class="fa fa-linkedin"></i></a></li>
+							</ul>
+						</div>
+						<div class="col-md-6 col-12">
+							<ul class="list-inline float-right top-right">
+								<li class="account-login">
+									{% if user.is_authenticated %}
+									<span>
+									<a href="{% url 'profile' %}" >Profile</a> <h7 class="text-light"> | </h7> 
+									<a href="{% url 'logout' %}" >logout</a>
+									</span>
+									{% else %}
+									<span><a href="{% url 'login' %}">Log In</a>
+									<small>or</small>z
+									<a href="{% url 'register' %}">Create an account</a>
+									</span>
+									{% endif %}
+								</li>
+								   <li class="searchBox">
+                    <a href="#"><i class="fa fa-search"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                      <li>
+                      	<span class="input-group">
+							<form class="form-inline mt-2 mt-md-0" role="search" action="/s/">
+						      <input class="form-control" type="text" placeholder="Search" aria-label="Search" name= "search">
+						      <button class="input-group-addon" type="submit">Search</button>
+						    </form>
+						</span>
+
+
+
+
+                        
+                        
+                      </li>
+                    </ul>
+                  </li>
+								<li class="dropdown cart-dropdown">
+                    			<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i>&#8377; 0</a>
+                    			</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- NAVBAR -->
+			<nav class="navbar navbar-main navbar-default navbar-expand-md" role="navigation">
+				<div class="container">
+					<a href="{% url 'tohffa-home' %}" class="navbar-brand">
+						<img class="img-responsive" src="{% static 'img/logo.png' %}" height="55px"></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse" aria-controls="navbar-ex1-collapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="fa fa-bars"></span>
+            </button>
+
+				<!--NAVLINKS--->
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav ml-auto">
+					  <!--	<li class="nav-item dropdown  active">
+							<a href="" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">HOME</a>
+						</li>  -->
+						<li class="nav-item dropdown megaDropMenu ">
+                  			<a href="" class="dropdown-toggle nav-link" data-toggle="dropdown" data-hover="dropdown" data-delay="300" data-close-others="true" aria-expanded="false">
+                  				Products</b></a>
+									<ul class="dropdown-menu row">
+				                    <li class="col-md-3 col-12">
+				                      <ul class="list-unstyled">
+				                        <li>Accessories</li>
+				                        <li class=""><a href="">Jewellery</a></li>
+				                        <li class=""><a href="">Brasss-ware</a></li>
+				                        <li class=""><a href="">Gift-ware</a></li>
+				                        <li class=""><a href="">Bone Items</a></li>
+				                        <li class=""><a href="">Horn Items</a></li>
+				                      </ul>
+				                    </li>
+				                    <li class="col-md-3 col-12">
+				                      <ul class="list-unstyled">
+				                        <li>Bone & Horn Items</li>
+				                        <li class=""><a href="">Horn Items</a></li>
+				                        <li class=""><a href="">Bone Items</a></li>
+				                        <li class=""><a href="">Crockery</a></li>
+				                        <li class=""><a href="">House hold</a></li>
+				                        <li class=""><a href="">Home Decoratives</a></li>
+				                      </ul>
+				                    </li>
+                            
+				                    <li class="col-md-3 col-12">
+				                      <ul class="list-unstyled">
+				                        <li>Jewellery</li>
+				                        <li class=""><a href="">Bangles</a></li>
+				                        <li class=""><a href="">Neckleces</a></li>
+				                        <li class=""><a href="">Ear-rings</a></li>
+				                        <li class=""><a href="">Bracelets</a></li>
+				                        <li class=""><a href="">Ring</a></li>
+				                      </ul>
+				                    </li>
+				                    <li class="col-md-3 col-12">
+				                      <ul class="list-unstyled">
+				                        <li>Gift wares</li>
+				                        <li class=""><a href="">Wedding</a></li>
+				                        <li class=""><a href="">Birthday</a></li>
+				                        <li class=""><a href="">Anniversaries</a></li>
+				                        <li class=""><a href="">Kitty Parties</a></li>
+				                        <li class=""><a href="">Others</a></li>
+				                      </ul>
+				                    </li>
+				                </ul>
+						</li>
+						<li class="nav-item dropdown ">
+			                  <a href="" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">info</a>
+			                  <ul class="dropdown-menu dropdown-menu-left">
+			                    <li class=""><a href="{% url 'tohffa-about' %}">About Us</a></li>
+			                    <li class=""><a href="{% url 'register' %}">Register</a></li>
+			                    <li class=""><a href="{% url 'login' %}">Login</a></li>
+			                   <!-- <li class=""><a href="lost-password.html">Password Recovery</a></li> -->
+			                    <li class=""><a href=" ">Return Policy</a></li>
+			                    <li class=""><a href=" ">Terms &amp; Conditions</a></li>
+			                  </ul>
+			              </li>
+			              <li class="nav-item dropdown ">
+			                  <a href="" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+			                  <ul class="dropdown-menu dropdown-menu-right">
+			                    <li class=""><a href="account-dashboard.html">Dashboard</a></li>
+			                    <li class=""><a href="{% url 'profile' %}">Profile</a></li>
+			                    <li class=""><a href="account-all-orders.html">Orders</a></li>
+			                    <li class=""><a href="account-wishlist.html">Wishlist</a></li>
+			                    <li class=""><a href="account-address.html">Address</a></li>
+			                  </ul>
+			                </li>
+					</ul>
+				</div>
+
+
+				</div>
+				
+			</nav>
+
+		</div>
+	</div>
+
+	
+	
+		
+
+	<div class="col-md-8">
+							{% if messages %}
+								{% for message in messsages %}
+									<div class="alert alert-{{ message.tags }}">
+										{{ message }}
+									</div>
+								{% endfor %}
+
+							{% endif %}
+
+
+	</div>
+
+
+
+
+
+							{% block content %}{% endblock %}
+
+
+
+
+
+<div class="mar">
+
+</div>
+	
+<!--FOOTER-->
+<footer class="footer-area gap">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-6 col-sm-6 address">
+        <div class="single-footer-widget ">
+          <h6 class="mb-20">Social</h6>
+                <ul class="d-flex flex-wrap">
+                  <li><a href="https://www.facebook.com/neelkanth1973" class="p-2 text-warning "><i class="fa fa-facebook"></i></a></li>
+                  <li class=" text-warning " style="margin-right: 10px;"><i class="fa fa-instagram"></i></li>
+                  <li class=" text-warning "><a href="https://www.linkedin.com/company/neelkanth-enterprises/" class=" text-warning "><i class="fa fa-linkedin"></i></a></li>
+                  <li class=" text-warning " style="margin-left: 10px;"><i class="fa fa-twitter"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-6 address">
+            <div class="single-footer-widget">
+              <h6>Important Links</h6>
+                  <div class="row">
+                    <div class="col">
+                      <ul>
+                        <li><a href="#" class="p-2 text-warning shop">Return policy</a></li>
+                        <li><a href="#" class="p-2 text-warning shop">Order status</a></li>
+                        <li><a href="#" class="p-2 text-warning shop">FAQs</a></li>
+                      </ul>
+                    </div>
+                    <div class="col">
+                      <ul>
+                        <li><a href="#" class="p-2 text-warning shop">Jewellery</a></li>
+                        <li><a href="#" class="p-2 text-warning shop">Gift Items</a></li>
+                        <li><a href="#" class="p-2 text-warning shop">Handicrafts</a></li>
+                      </ul>
+                   </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-3  col-md-6 col-sm-6 text-white address">
+                         <div class="single-footer-widget align-items-center">
+                               <h6>Address</h6>
+                               <p class="text-warning">
+                               Neelkanth Enterprises<br>
+                               Sarai Tareen, Sambhal<br>
+                               Uttar Pradesh (244303), India
+                               <br><br>
+                             <i class="fa fa-phone"></i>  +91 9837140318<br>
+                          	 <i class="fa fa-envelope" aria-hidden="true"></i><a href="#" class="p-2 text-warning shop">info@tohffa.in</a><br>
+                             <i class="fa fa-globe" aria-hidden="true"></i><a href="#" class="p-2 text-warning shop">www.tohffa.in</a>
+                               </p>
+                          </div>
+                   </div>
+                   <div class="col-lg-3  col-md-6 col-sm-6">
+                     <div class="single-footer-widget">
+                      <h6>About Us</h6>
+                       <p class="text-warning">
+                       	  Tohffa.in is the e-commerce platform of Neelkanth Enterprises. To know more about us 
+                       	  
+                       	  <a href="{% url 'tohffa-about' %}" class="text-warning shop"><u>Click here</u></a>
+
+
+                       </p>
+                     </div>
+                   </div>
+
+
+                     </div>
+                   </div>
+                   <hr>
+                   <p class="pt-3 text-center text-white ">
+                   Copyright &copy; 1999-<script>document.write(new Date().getFullYear());</script> Neelkanth Enterprises
+                   </p>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'products/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'products/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'products/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'products/main.js' %}"></script>	
+	
+  <script type="text/javascript" src="{% static 'products/owl.carousel.min.js' %}"></script>
+
+
+    <script type="text/javascript" src="{% static 'products/bootstrap.bundle.min.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'products/holder.min.js' %}"></script>
+</body>
+</html>
