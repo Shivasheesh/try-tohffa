@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1 class="page-title m-4">Searched for : {{ query }}</h1>
+<h2 class="search-title">You have searched for : {{ query }}</h2>
 
 <div class="album p-5">
   <div class="container">
@@ -32,26 +32,23 @@
 
 </div>
 
-<section class="featured-products album p-5">
-  <div class="page-header text-center text-dark">
-    <h2 class="display-7 mb-5 m-3">PHOTOFRAMES</h2>
-  </div>
-  <div class="container">
-  <div id="products-carousel" class="owl-carousel">
 
-   {% for photoframe in photoframes %}
-    <div class="item product mr-2">
-        <img src="{{ photoframe.image.url }}" alt="">
-        <div class="product-details">
-                <h7 class="product-title ">{{ photoframe.title }}</h7>
+
+<div class="container">
+    <div id="products-carousel" class="owl-carousel">
+
+        {% for photoframe in photoframes %}
+        <div class="item product mr-2">
+            <img src="{{ photoframe.image.url }}" alt="">
+            <div class="product-details">
+                <h6 class="product-title ">{{ photoframe.title }}</h6>
                 <h6 class="product-price text-right"><span class="sale-price">Rs{{ photoframe.price }}</span></h6>
+            </div>
         </div>
-      </div>
 
-{% endfor %}
+        {% endfor %}
+    </div>
 </div>
-</div>
-</section>
 
 
 {% endblock content %}

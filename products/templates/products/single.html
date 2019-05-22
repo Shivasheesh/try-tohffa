@@ -7,7 +7,7 @@
      <div class="container">
          <div class="page-header-content text-center">
              <div class="page-header wsub">
-                 <h1 class="page-title">{{ product.title }}</h1>
+                 <h1 class="page-title">{{ product.title }}{{ photoframe.title }}</h1>
              </div>
              <p class="slide-text">Product description is given below</p>
          </div>
@@ -20,11 +20,11 @@
             <div class="col-sm-6 col-md-7 content-area">
                 <div class="product-content-area">
                     <div>
-                        <img src=" " class="item1">
+                        <img src="{{ product.image.url }}" class="item1">
                     </div>
-                   
+
                     <div class="tab-content">
-                       
+
                     </div>
                 </div>
             </div>
@@ -33,32 +33,69 @@
                             <div class="product-details">
                                             <h4>{{ product.title }}</h4>
                                              <p>{{ product.description }}</p>
-                                
+
                                 <h4 class="space-top-30">Product Info</h4>
-                                
+
                                 <div class="product-info">
                                     <div class="info">
-                                        <p><i class="fa fa-tag" aria-hidden="true"></i></i><span>Price: Rs{{ product.price }}</span></p>
+                                        <p><i class="fa fa-tag" aria-hidden="true"></i><span>Price: Rs{{ product.price }}</span></p>
                                     </div>
                                     <div class="info">
-                                        <p><i class="fa fa-heart-o" aria-hidden="true"></i><span>Category: Bangles </span></p>
+                                        <p><i class="fa fa-heart-o" aria-hidden="true"></i><span>Category: {{ product.category.title }}</span></p>
                                     </div>
                                     <div class="info">
                                         <p><i class="fa fa-info" aria-hidden="true"></i><span>NK-201803</span></p>
                                     </div>
-                                   
+
                                 </div><!-- / project-info -->
                       <div class="buy-product">
                         <div class="options">
-                            <input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4">
-                            <span class="selectors">
-                                <select class="selectpicker">
+                            <form method="POST" action='{% url "add_to_cart" product.slug %}'>{% csrf_token %}
+
+
+                        <input type="number" step="1" min="0" name="qty" value="1" title="Qty" class="input-text qty text" size="4">
+                      <!--  <input type="value" name="attr" placeholder='color' class="form-control"> -->  
+                        <span class="selectors">
+                            {% if product.variation_set.all %}
+
+
+                                 {% if product.variation_set.sizes %}
+                                <select class="selectpicker" name="size">
                                     <optgroup label="Size:">
-                                        <option>Small</option>
-                                        <option>Medium</option>
-                                        <option>Large</option>
+                                        {% for item in product.variation_set.sizes %}
+                                        <option value="{{ item.title|lower }}">{{ item.title|capfirst }}</option>
+                                    {% endfor %}   
+                                </select>
+                            {% endif %}
+                            {% if product.variation_set.colors %}
+                                <select class="selectpicker two" name="color">
+                                    <optgroup label="Color:">
+                                        {% for item in product.variation_set.colors %}
+                                         <option value="{{ item.title|lower }}">{{ item.title|capfirst }}</option>
+                                          {% endfor %}   
                                     </optgroup>
                                 </select>
+                                {% endif %}
+                            {% endif %}
+                            </span>
+                            <br><br>
+                            <input type="submit" value='Add to cart' class="btn btn-primary">
+
+
+
+
+                                </form>
+
+<!--
+                                <span class="selectors">
+                                    <select class="selectpicker">
+                                        <optgroup label="Size:">
+                                            <option>Small</option>
+                                            <option>Medium</option>
+                                            <option>Large</option>
+                                        </optgroup>
+                                    </select>
+                                
                                 <select class="selectpicker two">
                                     <optgroup label="Color:">
                                         <option>Grey</option>
@@ -66,18 +103,21 @@
                                         <option>Blue</option>
                                     </optgroup>
                                 </select>
+                                -->
                             </span>
-                        </div>
+
                         <!-- / options -->
 
-                        <div class="space-25">&nbsp;</div>
-
-                        <a href="shopping-cart.html" class="btn btn-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span> Add to Cart</span></a>
-                        <a href="checkout.html" class="btn btn-success"><i class="fa fa-heart" aria-hidden="true"></i><span> Buy Now</span></a>
                         </div>
                       </div>
                     </div>
-                    
+
+                        <div class="space-25">&nbsp;</div>
+
+
+                       
+                        <a href="checkout.html" class="btn btn-success"><i class="fa fa-heart" aria-hidden="true"></i><span> Buy Now</span></a>
+                        </div>
 
 
 
@@ -86,6 +126,8 @@
 
 </div>
 </section>
+
+
 
 
 

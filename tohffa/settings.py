@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'users.apps.UsersConfig',
+    'carts.apps.CartsConfig',
+    'orders.apps.OrdersConfig',
+    'accounts.apps.AccountsConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -116,6 +119,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+                'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.debug',
+                'django.core.context_processors.i18n',
+                'django.core.context_processors.media',
+                'django.core.context_processors.request',
+                'django.core.context_processors.static',
+                'django.core.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+
+           )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -132,3 +146,8 @@ LOGIN_URL = 'login'
 TEMPLATES_DIRS = (
         os.path.join(BASE_DIR, 'templates'),
     )
+
+
+STRIPE_SECRET_KEY = "sk_test_SpbmxYaLCTK2iVo6cS9PFRkm00nQSykr8w"
+
+STRIPE_PUBLISHABLE_KEY = "pk_test_nq3G1Q2hQedYANX9KkN8AHVe00iLhHozkp"

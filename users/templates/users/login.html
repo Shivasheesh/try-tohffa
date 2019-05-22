@@ -3,11 +3,24 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<div class="container p-2 ">
 		<form method="POST">
 			{% csrf_token %}  <!-- to provide security -->
 			<fieldset class="form-group">
-				<legend class="border-bottom mb-4"><div class="panel-heading text-center">Log in here</div></legend>
+				<legend class="border-bottom mb-4"><h3 class="panel-heading text-center">Log in here</h3></legend>
 				{{ form|crispy }} <!-- 
 					using crsipy form tag
 				excessing the form variable   
